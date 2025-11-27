@@ -1,0 +1,62 @@
+Day 1 Notes
+
+
+Commands:
+
+
+mkdir                (Create a directory)
+ls                   (List contents of current directory)
+ls -l                (Long listing of contents ie permissions)
+rm                   (Remove file)
+cd ..                (Go back a directory)
+cd ~/path            (Go to specific path)
+ls -a                (Show hidden files)
+cd foldername        (Move to folder)
+cd ~                 (Back to home)
+cd -                 (Toggle between last directory)
+mkdir -p dir/subdir  (Create nested directories)
+touch file.txt       (Create an empty file)
+rm -r folder         (Remove directory & contents) 
+cp file1 file2       (Copy file)
+mv file1 file2       (Move/rename file)
+---------------------------------------------------------------
+
+Nano editor is what I have experience in and is very simple and self explanatory
+
+Today I learned about Vim and it's basics
+
+VIM Basics:
+
+Modes:
+- Normal Mode (default) - navigation & commands
+- Insert Mode - typing text
+- Command Mode - saving/quitting
+
+Essential Keys:
+
+- i -> insert mode
+- Esc -> return to normal mode
+- :w -> write (save)
+- :q -> quit
+- :wq -> save and quit
+- dd -> delete line
+- yy -> yank (copy)
+- p -> paste
+
+IF YOU GET STUCK
+Esc :q! (quit without saving)
+
+------------------------------------------------------------------
+
+Confusion & Mistakes
+
+- Obviously VIM took a couple minutes to get used to
+- Was a little rusty traversing through directories, but it came back and I    enterered flow state
+- When creating nested directories I created a directory within the
+  directory of the same name
+  
+      IE: mkdir -p company/hr
+      (While I am already in the company directory)
+----------------------------------------------------------------------
+
+OVERALL, Great first day!
