@@ -1,0 +1,31 @@
+Today's excercise was to create this sample company directory in Linux:
+
+company/
+├── hr/
+│   ├── employees.txt
+│   └── payroll.csv
+├── it/
+│   ├── scripts/
+│   │   ├── backup.sh
+│   │   └── cleanup.sh
+│   └── logs/
+│       └── auth.log
+└── sales/
+    ├── leads.csv
+    └── regions/
+        ├── east.txt
+        ├── west.txt
+        └── south.txt
+
+
+Then:
+
+Add text inside at least 3 files
+(Files chosen: employees.txt, backup.sh, east.txt)
+
+Use ls -R company to view the full tree
+
+Delete one folder & restore it
+(Created north.txt, removed it, then restored it)
+
+
