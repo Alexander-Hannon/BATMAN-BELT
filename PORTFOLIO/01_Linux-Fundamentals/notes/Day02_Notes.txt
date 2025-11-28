@@ -61,7 +61,8 @@ Others = read
 [ Create a User: ]
 
 sudo useradd student1
-sudo passwd 12345
+sudo passwd student1
+(Prompts to set a password)
 
 
 [ Create a Group: ]
