@@ -1,0 +1,28 @@
+PRACTICAL EXCERCISE - "SECURE THE SYSTEM"
+
+The excercise for the day was to:
+
+1.) Create 2 Groups
+- alpha
+- beta
+
+2.) Create 3 Users
+- user1
+- user2
+- user3
+
+3.) Add Users to Groups
+- user1 & user2 -> alpha
+- user3 -> beta
+
+4.) Change ownership
+- secrets.txt -> owner user1, group alpha
+- public.txt -> owner user2, group alpha
+- script.sh -> owner user3, group beta
+
+5.) Set permissions
+- secrets.txt -> owner RW, group R only (640)
+- public. txt -> owner RWm group RW, others R (664)
+- script.sh -> owner RWX (700)
+
+------------------------------------------------------------
