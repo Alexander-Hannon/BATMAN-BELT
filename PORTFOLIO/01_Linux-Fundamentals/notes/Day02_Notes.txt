@@ -1,0 +1,159 @@
+INITIAL NOTES:
+
+DAY 2: Permissions, Users, Groups, Sudo, Chown, Chmod
+
+
+
+< PERMISSIONS BREAKDOWN >
+
+EVERY FILE/DIRECTORY HAS 3 CATEGORIES OF ACCESS
+
+Applies To          Symbol
+
+User/Owner          (u)
+Group               (g)
+Others              (o)
+
+EACH CATEGROY HAS 3 PERMISSIONS
+
+Permission         Meaning
+
+r                  (read)
+w                  (write)
+x                  (execute)
+
+
+BREAKDOWN EXAMPLE
+
+1.)
+
+-rw-r--r--
+-/rw-/r--/r--
+
+- = file (d = directory)
+rw- = owner permissions
+r-- = group permissions
+r-- = others permissions
+
+Owner = read/write
+Group = read
+Others = read
+
+2.)
+
+drwxr-xr--
+d/rwx/r-x/r--
+
+d = directory
+rwx = owners permissions
+r-x = group permissions
+r-- = others permissions
+
+Owner = read/write/execute
+Group = read/execute
+Others = read
+
+
+--------------------------------------------------
+
+< USERS & GROUPS >
+
+[ Create a User: ]
+
+sudo useradd student1
+sudo passwd 12345
+
+
+[ Create a Group: ]
+
+sudo groupadd redteam
+
+
+[ Add User to Group ]
+
+sudo usermod -aG redteam student1
+(-aG = add group / -a = append user / G specifies the group)
+
+
+[ Check membership ]
+
+groups student1
+
+
+[ Switch User ]
+
+su - student1
+(su = switchuser)
+
+------------------------------------------------------
+
+< OWNERSHIP - chown & chgrp >
+
+[ Change Owner ]
+
+sudo chown student1 file.txt
+
+
+[ Change Group ]
+
+sudo chgrp redteam file.txt
+
+
+[ Change Both ]
+
+sudo chown student1:redteam file.txt
+
+
+---------------------------------------------------------
+
+< PERMISSIONS - chmod MASTERY >
+
+A.) SYMBOLIC METHOD
+
+[ Add Execute to User ]
+
+chmod u+x script.sh
+(User ADD execute = u+x)
+
+
+[ Remove Read from Group ]
+
+chmod g-r file.txt
+(Group REMOVE read = g-r)
+
+
+[ Give All Permission to Owner ]
+
+chmod u=rwx file.txt
+
+
+
+B.) NUMERIC METHOD
+
+Binary Math:
+
+r = 4
+w = 2
+x = 1
+
+rwx                Value
+-------------------------
+---                0
+--x                1
+-w-                2
+-wx                3
+r--                4
+r-x                5
+rw-                6
+rwx                7
+
+
+Ex 1.)
+
+chmod 750 file.txt
+(Owner = All / Group = Read/Execute / Others = Nothing )
+
+Ex 2.)
+
+chmod 744 file.txt
+(Owner = All / Group = Read / Others = Read)
