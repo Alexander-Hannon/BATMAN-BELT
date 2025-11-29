@@ -1,0 +1,34 @@
+TODAY'S EXERCISE WAS TO LOG INTO A SYSTEM REMOTELY USING SSH
+
+1.) CREATE USER ON TARGET SYSTEM
+
+sudo adduser agent1
+
+2.) ENABLE SSH SERVICE ON TARGET
+
+sudo systemctl status ssh
+
+[ IF INACTIVE ]:
+sudo apt install openssh-server
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+(My ubuntu didn't have ssh enabled/installed by default)
+
+3.) GENERATE SSH ON CLIENT SYSTEM
+
+ssh-keygen -t rsa -b 4096
+(Pop ups occur / I selected defaults)
+
+[Verified Keys]
+Location : ~/.ssh/id_rsa & ~/.ssh/id_rsa.pub
+Vim in and verify the keys are there
+
+
+4.) SEND PUBLIC KEY TO CLIENT
+
+ssh-copy-id agent1@192.168.198.6
+
+5.) TEST PASSWORDLESS LOGIN
+
+ssh agent1@192.168.198.6
