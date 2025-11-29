@@ -1,1 +1,105 @@
 
+USERS/GROUPS + SSH + KEY-BASED AUTHENTICATION
+
+---------------------------------------------
+
+
+ADDING USERS:
+
+sudo adduser <username>
+
+
+CREATING GROUPS:
+
+sudo groupadd <groupname>
+
+
+ASSIGNING USERS TO GROUP
+
+sudo usermod -aG <groupname> <username>
+
+
+VERIFYING GROUPS
+
+groups <username>
+(will display what groups the user is in)
+
+
+-----------------------------------------------------
+
+
+ENABLING SSH
+
+VERIFY SSH:
+
+sudo systemctl status ssh
+
+IF INACTIVE:
+
+sudo apt install openssh-server
+sudo systemctl enable ssh
+sudo system start ssh
+
+-----------------------------------------------------
+
+GENERATING SSH KEYS
+
+[ON CLIENT MACHINE]
+
+ssh-keygen -t rsa -b 4096
+(Pop-Ups will occur / I selected defaults)
+
+[THE KEYS ARE NOW STORED IN ~/.ssh/id_rsa & ~/.ssh/id_rsa.pub]
+
+---------------------------------------------------------------
+
+SENDING SSH PUBLIC KEY TO TARGET
+
+A.) 
+
+(This method usually works)
+ssh-copy-id <username>@<target ip>
+
+B.) (if previous method doesn't work) (manual)
+
+On Client: 
+cat ~/.ssh/id_rsa.pub
+(Copy Entire Line)
+
+On Target:
+su - <username> (Switch to user you'd like to remote access)
+mkdir -p ~/.ssh (Create directory)
+nano ~/.ssh/authorized_keys
+(PASTE & SAVE)
+
+Then:
+
+chmod 700 ~/.ssh (Change permissions of directory to rwx for owner)
+chmod 600 ~/.ssh/authorized_keys (Change perm of file to rw for owner)
+
+-------------------------------------------------------------
+
+TESTING PASSWORDLESS LOGIN
+
+ssh <username>@<target ip>
+
+
+------------------------------------------------------------
+
+SECURING SYSTEM BY DISABLING PASSWORD LOGINS
+
+Edit on System:
+
+sudo nano /etc/ssh/sshd_config
+
+Find:
+
+PasswordAuthentication yes
+
+Change to:
+
+PasswordAuthentication no
+
+Restart SSH:
+
+sudo systemctl restart ssh
