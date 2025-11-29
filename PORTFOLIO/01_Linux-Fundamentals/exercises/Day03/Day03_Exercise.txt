@@ -32,3 +32,13 @@ ssh-copy-id agent1@192.168.198.6
 5.) TEST PASSWORDLESS LOGIN
 
 ssh agent1@192.168.198.6
+
+----------------------------------------
+
+RESULTS: 
+
+-Remotely Accessed Ubuntu Server
+-Traversed through directory
+-Created New Directory
+-Created Txt file and bash file
+-Wrote and executed basic bash script
