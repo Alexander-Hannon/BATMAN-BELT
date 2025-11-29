@@ -158,3 +158,16 @@ Ex 2.)
 
 chmod 744 file.txt
 (Owner = All / Group = Read / Others = Read)
+
+
+-----------------------------------------------
+
+< UMASK >
+
+UMASK sets the total possible permissions for files and directories
+
+Ex.) My Kali VM has a UMASK of 002 -> 
+      Files: 664 (Owner & Group = Read/Write, Others = Read)
+      Directories: 775 (Owner & Group = RWX / Others = RX)
+
+(FILES = MAX 6 / DIRECTORY = MAX 7)
