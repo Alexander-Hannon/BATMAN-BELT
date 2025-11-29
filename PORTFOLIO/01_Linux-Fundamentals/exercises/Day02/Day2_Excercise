@@ -28,3 +28,27 @@ The excercise for the day was to:
 ------------------------------------------------------------
 
 TRAVERESED BETWEEN DIFFERENT USERS AND SAW WHAT I COULD AND COULD NOT ACCESS
+
+
+--------------------------------------------------------------
+
+BONUS PUZZLE
+
+1.) make a.txt readable by everyone, but only writable by the owner
+A.) chmod 644 a.txt
+
+2.) make b.txt readable/writable by owner & groups, no permissions for others
+A.) chmod 660 b.txt
+
+3.) make c.sh executable by every, but only owner can write to it
+A.) chmod 755 c.sh
+
+4.) make secret.txt owner-only with full permissions
+A.) chmod 700 secret.txt
+
+5.) set umask so that future files default
+    owner: rw
+    group: r
+    others: m/a
+
+A.) umask 026
