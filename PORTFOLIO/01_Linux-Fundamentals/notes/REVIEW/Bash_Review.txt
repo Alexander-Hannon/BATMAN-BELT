@@ -1,0 +1,26 @@
+BASH REVIEW (w3schools)
+
+---------------------------------------
+
+[BASIC SYNTAX]
+
+Comments: #
+Command Order: Run in sequence from top to bottom
+Semicolons: can be used to seperate multiple commands on the same-line
+
+----------------------------------------
+
+[SHEBANG]
+
+#!/bin/bash
+
+----------------------------------------
+
+[VARIABLES]
+
+ex.)
+name="World"
+echo "Hello, $name!"
+
+
+
