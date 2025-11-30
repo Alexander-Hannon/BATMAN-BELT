@@ -18,9 +18,173 @@ Semicolons: can be used to seperate multiple commands on the same-line
 
 [VARIABLES]
 
+Declare -> variable_name=value
+Access Variable -> $variable_name
+
 ex.)
 name="World"
 echo "Hello, $name!"
 
 
+ENVIRONMENT VARIABLES
 
+"Special Variables that affect the way processes run on your system. Often used to store system wide values"
+
+Ex.) 
+# Display the PATH environment variable
+echo "Your PATH is $PATH"
+
+LOCAL VS GLOBAL VARIABLES
+
+"Local variables can only be accessed within the block they are in. Global variables can be accessed anywhere in the script."
+
+Ex.) Local Variable
+# Define a local variable in function
+my_function() {
+  local local_variable="I am a local variable"
+  echo $local_var
+}
+my_function
+
+
+COMMON VARIABLE OPERATIONS
+
+Concatenation: Combine strings using variables
+Arithmetic: Perform calculations using variables
+
+Ex.) Concatenation
+greeting="Hello"
+name="AJ"
+echo "$greeting$name"
+
+Ex.) Arithmetic
+num1=4
+num2=6
+sum=$((num1+num2))
+echo "The sum is $sum"
+
+-----------------------------------------------------
+
+[DATA TYPES]
+
+Types:
+- Strings
+- Numbers
+- Arrays
+- Associative Arrays
+
+Limitations: Bash DOES NOT support floating-point arithmetic
+
+--------------------------------------------------------
+
+[BASH OPERATORS]
+
+COMPARISON OPERATORS:
+
+-eq : equal to
+-ne : not equal to
+-gt : greater than
+-ge : greater than or equal to
+-lt : less than
+-le : less than or equal to
+
+
+STRING COMPARISON OPERATORS:
+
+= : equal to
+!= : Not equal to
+< : Less than (ASCII)
+> : Greater than (ASCII)
+
+
+ARITHMETIC OPERATORS:
+
++ : addition
+- : subtraction
+* : multiplication
+/ : division
+% : mod (remainder of division)
+
+
+LOGICAL OPERATORS
+
+&& : Logical AND
+|| : Logical OR
+!  : Logical NOT
+
+
+FILE TEST OPERATORS
+
+-e : Checks if file exists 
+-d : Checks if directory exists
+-f : Checks if a file is a regular file
+-s : Checks if file is not empty
+
+------------------------------------------------
+
+[IF...ELSE]
+
+IF STATEMENTS
+
+Components:
+
+- if (start statement)
+- []; (condition)
+- then (execute code)
+- fi (end statement)
+
+Ex.)
+num=15
+if [ $num -gt 10 ]: then 
+  echo "Number is greater than 10"
+fi
+
+
+IF ELSE STATEMENTS
+
+Components:
+
+- if (start statement)
+- []; (condition)
+- then (execute code)
+- else (if condition is not true)
+- fi (end statement)
+
+Ex.)
+num=8
+if [ $num -gt 10 ]; then 
+  echo "Number is greater than 10"
+else
+  echo "Number is less than 10"
+fi
+
+
+ELIF STATEMENTS
+
+Components:
+
+- if (start statement)
+- []; (condition)
+- then (execute code)
+- elif (move to next condition if 1st not met)
+- []; (second condition)
+- then (execute code)
+- else (if both conditions not met)
+- fi (end statement)
+
+Ex.)
+num=10
+if [ $num -gt 10 ]; then
+  echo "Number is greater than 10"
+elif [ $num -eq 10]; then 
+  echo "Number is exactly 10"
+else
+  echo "Number is less than 10"
+fi
+
+
+NESTED IF STATEMENTS
+(Place If Statement inside another)
+
+Ex.)
+num=5
