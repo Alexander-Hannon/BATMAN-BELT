@@ -188,3 +188,71 @@ NESTED IF STATEMENTS
 
 Ex.)
 num=5
+if [ $num -gt 0 ]; then
+  if [ $num -lt 10 ]; then
+    echo "Number is between 1 and 9"
+  fi
+fi
+
+---------------------------------------------------
+
+[BASH LOOPS]
+
+
+FOR LOOPS (Specified # of times)
+
+Components:
+
+- for (begin loop)
+- i (index/iteration)
+- in (points to range)
+- {}; (range)
+- do (execute code)
+- done (finih loop)
+
+Ex.) 
+for i in {1..5}; do
+  echo "Iteration $i"
+done
+
+
+WHILE LOOPS (While a specified condition is true)
+
+Components:
+
+- while (begin loop)
+- []; (condition)
+- do (execute code)
+- done (finish loop)
+
+Ex.)
+count=1
+while [ $count -le 5 ]; do
+  echo "Count is $count"
+  ((count++))
+done
+
+
+UNTIL LOOPS (Loop Until a condition becomes true)
+
+Components:
+
+- until (begin loop)
+- []; (condition)
+- do (execute code)
+- done (finish loop)
+
+
+BREAK AND CONTINUE
+(Break and Continue statements are used to control loop execution. "break" exits the loop, while "continue" skips the next iteration.)
+
+Ex.)
+for i in {1..5}; do
+  if [ $i -eq 3 ]; then
+    continue
+  fi
+  echo "Number $i"
+  if [ $i -eq 4 ]; then
+    break
+  fi
+done
