@@ -256,3 +256,130 @@ for i in {1..5}; do
     break
   fi
 done
+
+
+NESTED LOOPS (Loop within Loop)
+
+Ex.)
+for i in {1..3}; do 
+  for j in {1..2}; do
+    echo "Outer loop $i, Inner loop $j"
+  done
+done
+
+----------------------------------------------
+
+[BASH FUNCTIONS]
+
+DEFINING FUNCTIONS
+
+Ex.)
+my_function() {
+  echo "Hello, World!"
+}
+
+CALLING FUNCTIONS
+
+my_function
+
+
+ADVANCED FUNCTION FEATURES
+(Functions can accept arguments, return values, and use local variables.)
+
+greet() {
+  local name=$1
+  echo "Hello, $name!"
+}
+greet "Alice"
+
+(The 1 represents the first argument passed into the function)
+
+
+RETURN VALUES
+
+add() {
+  local sum=$(($1 + $2))
+  echo $sum
+}
+result=$(add 5 3)
+echo "The sum is $result"
+
+-------------------------------------------------
+
+[BASH ARRAYS]
+
+# INDEXES START AT 0
+
+(Arrays can store multiple values)
+
+CREATING ARRAY
+
+Ex.)
+my_array=("value1" "value2" "value3")
+
+
+ACCESSING ARRAY
+
+Ex.) 
+echo ${my_array[0]}
+
+(This accesses the first element of my_array)
+
+
+MODIFYING ARRAY ELEMENT
+
+Ex.)
+my_array[1]="new_value"
+
+(This changes the 2nd element in my_array to the text string "new_value"
+
+---------------------------------------------------------
+
+SCHEDULING TASKS - Cron
+
+(The cron system is a time-based job scheduler in Unix-like operating systems. It automates the execution of tasks (known as cron jobs) at specified intervals. Crontab is used to set up and control cron jobs.)
+
+
+CRONTAB SYNTAX
+
+crontab [options]
+
+Options:
+-e (Edit the crontab file for the current user)
+-l (List the crontab entries for the current user)
+-r (Remove the crontab file for the current user)
+
+
+SETTING UP CRON JOBS
+(Cron jobs are defined using a specific syntax in the crontab file. Each line in the file represents a task and follows this format:)
+
+* * * * * command_to_execute
+
+* Minute: 0-59
+* Hour: 0-23
+* Day of Month: 1-31
+* Month: 1-12
+* Day of Week: 0-7 (0 and 7 are Sunday)
+
+(Each asterisk can be replaced with a specific value or range to schedule the command at specific times.
+
+
+SCHEDULING A TASK
+
+Ex.)
+0 0 * * * /path/to/script.sh
+
+(This entry will execute /path/to/script.sh every day at 00:00 (midnight)
+
+Ex.)
+
+* * * * * /path/to/script.sh
+
+(This entry will execute /path/to/script.sh every minute
+
+
+COMMON USES
+
+- Automate system maintenance tasks, like backups and updates
+- Schedule scripts to run at specific times or intervals
+- Perform regular monitoring and reporting tasks
