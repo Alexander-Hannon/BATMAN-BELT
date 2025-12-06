@@ -1,0 +1,3 @@
+Realized that bash needs to be as simple as possible and is much harder to
+"make pretty" than other languages.
+
