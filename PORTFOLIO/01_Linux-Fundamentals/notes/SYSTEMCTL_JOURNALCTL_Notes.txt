@@ -1,0 +1,24 @@
+Today I went over Systemctl and Journalctl
+
+SYSTEMCTL:
+
+Used systemctl to start/stop/restart/enable/disable/list services on my Kali VM
+
+The most interesting aspect was the enable and disable on boot. As you use a computer regularly,
+you don't really take the time to think "Wow, this software/service is automatically enabled when 
+I start up my system.
+
+JOURNALCTL:
+
+Used journalctl to view the logs for specific services such as:
+    -SSH
+    -NetworkManager
+    -Apache2
+
+Viewed logs only from Today
+Viewed live logs
+Filtered logs by time
+Filtered logs by priority/severity
+
+* Thought that it was interesting that the usual log files in /var/log aren't there in more 
+"modern" systems. My Kali VM doesn't include these files and only really uses Journalctl

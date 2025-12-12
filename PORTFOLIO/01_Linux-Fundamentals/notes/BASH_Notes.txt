@@ -1,3 +1,5 @@
 Realized that bash needs to be as simple as possible and is much harder to
 "make pretty" than other languages.
 
+Created a BASH review file and went through and documented what I learned/went over from W3Schools
+
