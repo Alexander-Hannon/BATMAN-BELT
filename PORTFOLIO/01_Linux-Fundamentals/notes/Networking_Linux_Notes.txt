@@ -1,0 +1,57 @@
+NETWORKING ON LINUX
+
+Focus: Network visibility, sockets, connection, logging
+
+------------------------------------------
+
+Commands:
+
+ip addr
+- Displays network interfaces and assigned IP addresses
+- Preferred modern replacement for ifconfig
+
+ip route
+- Shows routing table
+- Identifies default gateway and packet paths
+
+ifconfig
+- Legacy interface tool
+- Still appears on older systems and documentation
+
+ss -tunap
+- Displays active TCP/UDP sockets
+- Shows process ownership of connections
+- Faster and more modern than netstat
+
+netstat -tulnp
+- Legacy networking tool
+- Useful for reading older guides and reports
+
+
+-------------------------------------------------
+
+KEY CONCEPTS:
+
+- Difference between listening vs established connections
+- Importance of identifying which process owns a network socket
+- Why ESTABLISHED state is most useful for incident investigation
+- Why numeric output (-n) avoids DNS resolution delays
+
+-------------------------------------------------
+
+LOGGING & AUTOMATION INSIGHTS:
+
+- Logs should be structured for readability and future parsing
+- Idempotent logging prevents duplicate noise
+- Footer reminders should be controlled, not duplicated
+- sed is regex-based, not string-based
+- Special characters (*, +, etc.) must be handled carefully
+
+------------------------------------------------
+
+REAL WORLD USE:
+
+This script could be used by:
+- SOC analysts for host-level network visibility
+- Incident responders during active investigations
+- Baseline creation for normal vs suspicious behavior
