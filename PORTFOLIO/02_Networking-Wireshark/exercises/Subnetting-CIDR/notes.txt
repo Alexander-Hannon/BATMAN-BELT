@@ -1,0 +1,122 @@
+SUBNETTING PRACTICE | CIDR | VLSM
+------------------------------------
+
+CIDR = how many bits belong to the network
+Remaining bits = hosts
+
+-------------------------------------
+
+SUBNETTING MENTAL MODEL
+
+IPv4 = 32 bits total
+
+OBJECTIVE:
+
+Ex.
+CIDR /24 -> 24 network bits + 8 host bits
+
+
+-------------------------------------------
+
+HOST FORMULA (MEMORIZE)
+
+Usable Hosts = (2 ^ host_bits) - 2
+
+Why minus 2?
+- Network Address
+- Broadcast Address
+
+
+----------------------------------------------
+
+CIDR QUICK REFERENCE
+
+CIDR        MASK                HOSTS
+/30         255.255.255.252     2
+/29         255.255.255.248     6
+/28         255.255.255.240     14
+/27         255.255.255.224     30
+/26         255.255.255.192     62
+/25         255.255.255.128     126
+/24         255.255.255.0       254
+
+------------------------------------------
+
+SUBNETTING WALKTHROUGH
+
+EX.)
+
+192.168.1.0/26
+
+
+Step 1 - IDENTIFY HOST bits
+
+32 - 26 = 6 host bits
+
+
+Step 2 - CALCULATE HOSTS
+
+2^6 - 2 = 62 usable hosts
+
+
+Step 3 - FIND SUBNET INCREMENT
+Subnet increment = 256 - mask value
+
+For /26:
+
+Mask = 255.255.255.192
+256 - 192 = 64
+
+
+Step 4 - SUBNET RANGES
+
+192.168.1.0 -> Network
+192.168.1.63 -> Broadcast
+Usable: 192.168.1.1 -> 192.168.1.62
+
+-------------------------------------------
+
+WHY DOES SUBNETTING MATTER
+
+SUBNETTING IS USED FOR:
+
+- Network Segmentation
+- Security Boundaries
+- Limiting Blast Radius
+- Routing Efficieny
+- Cloud VPC Design
+- Firewall Rules
+- SOC Investigations
+
+---------------------------------------------
+
+PRACTICE SET
+
+EX 1.)
+
+10.0.0.0/24
+Mask: 255.255.255.0
+
+Step 1: 32 - 24 = 8 host bits
+Step 2: 2^8 - 2 = 254 usable hosts
+Step 3: 256 - 0 = 256 block size (increment)
+
+- Network: 10.0.0.0
+- Broadcast: 10.0.0.255
+- Usable Range: 10.0.0.1 -> 10.0.0.254
+- Host Count: 254
+
+
+EX 2.)
+
+172.16.5.128/27
+Mask: 255.255.255.224
+
+Step 1: 32 - 27 = 5 host bits
+Step 2: 2^5 - 2 = 30 usable hosts
+Step 3: 256 - 224 = 32 block size (increment)
+
+- Metwork: 172.16.5.128
+- Broadcast: 172.16.5.159
+- Usable Range: 172.16.5.129 -> 172.16.5.158
+- Host Count = 30
