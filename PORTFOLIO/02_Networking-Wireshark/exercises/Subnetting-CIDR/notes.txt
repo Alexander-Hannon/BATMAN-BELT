@@ -1,6 +1,9 @@
 SUBNETTING PRACTICE | CIDR | VLSM
-------------------------------------
 
+
+------------------------------------
+CIDR (Classless Inter-Domain Routing)
+--------------------------------------
 CIDR = how many bits belong to the network
 Remaining bits = hosts
 
@@ -120,3 +123,44 @@ Step 3: 256 - 224 = 32 block size (increment)
 - Broadcast: 172.16.5.159
 - Usable Range: 172.16.5.129 -> 172.16.5.158
 - Host Count = 30
+
+
+EX 3.)
+
+192.168.50.0/28
+Mask: 255.255.255.240
+
+Step 1: 32 - 28 = 4 host bits
+Step 2: 2^4 - 2 = 14 usable hosts
+Step 3: 256 - 240 = 16 range size
+
+- Network: 192.168.50.0
+- Broadcast: 192.168.50.15
+- Usable Range: 192.168.50.1 -> 192.168.50.14
+- Host Count = 14         
+
+---------------------------------------------
+
+-----------------------------------------------
+VLSM (Variable Length Subnet Masking)
+-----------------------------------------------
+VLSM = subnets sizes in the same network
+
+
+Ex.) You have the CIDR: 192.168.10.0/24
+
+You need 3 subnets with different amounts of hosts:
+
+Subnet A -> 60 hosts
+Subnet B -> 30 hosts
+Subnet C -> 12 hosts
+
+Step Order (CRITICAL):
+1.) Sort by largest host requirement
+2.) Assign largest subnet first
+3.) Move sequentially
+
+Solution Outline:
+60 hosts -> /26
+30 hosts -> /27
+12 hosts -> /28
