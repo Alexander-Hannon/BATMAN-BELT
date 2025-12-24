@@ -1,0 +1,168 @@
+TCP/IP MODEL
+
+Layer           Purpose                         Examples
+------------------------------------------------------------------------
+Application     User-facing protocols           HTTP,HTTPS,DNS,FTP,SMTP
+Transport       End-to-End communication        TCP,UDP
+Internet        Logical addressing & routing    IP
+Network Access  Physical delivery               Ethernet,ARP
+
+Every packet you see belogs to all 4 layers simultaneously
+
+------------------------------------------------------------------------------
+
+
+PACKET FLOW (End-to-End Story)
+
+Example: 
+You load https://example.communication
+
+High-level flow: 
+1.) App asks for website
+2.) DNS resolves name -> IP
+3.) TCP session is established
+4.) Data is transferred
+5.) Session is closed
+
+Each of these produces distinct packets
+
+
+------------------------------------------------------------------------
+
+
+TCP 3-WAY HANDSHAKE (CRITICAL)
+
+(1) SYN 
+Client -> Server
+    "I want to talk"
+
+- TCP FLAG: SYN 
+- Sequence number chosen
+
+
+(2) SYN-ACK
+Server -> Client
+    "I hear you, let's talk"
+
+- TCP FLAGS: SYN, ACK
+- Acknowledges client's sequence
+
+(3) ACK
+Client -> Server
+    "Confirmed"
+
+- TCP FLAG: ACK
+- Connection established
+
+* AT THIS POINT DATA CAN FLOW
+
+
+[VISUAL]
+
+Client              SERVER 
+| -------- SYN -------> |
+| <------ SYN-ACK ----- |
+| -------- ACK -------> |
+
+(If pattern not in Wireshark = connection not established)
+
+Why is this important for SOCs?
+- SYN flood = DoS attack
+- Repeated SYNs without ACK = scanning
+- Missing handshake = blocked traffic
+- Half-open connections = suspicious behaviour
+
+------------------------------------------------------------------------------
+
+TCP vs UDP (ON THE WIRE)
+
+TCP                     UDP
+------------------------------
+Connection-oriented     Connectionless
+Reliable                Best effort
+Ordered                 Unordered
+Handshake required      No handshake
+
+
+Examples:
+
+- HTTP -> TCP
+- HTTPS -> TCP
+- DNS -> UDP (mostly)
+- VoIP -> UDP
+
+----------------------------------------------------------------------------
+
+DNS - What ACTUALLY Happens
+
+DNS is query-response protocols
+
+
+Normal DNS flow: 
+1.) Client sends DNS query
+2.) Server responds with IP
+3.) Client caches result
+
+
+
+Packet-level DNS details:
+- Protocl: UDP
+- Port: 53
+- Query types
+    * A -> IPv4
+    * AAAA -> IPv6
+    * CNAME -> alias
+    * MX -> mail
+
+
+
+Example of DNS conversation:
+
+Client -> DNS Server: "What is google.com?"
+DNS Server -> Client: "142.250.72.14"
+
+If DNS fails:
+- Nothing else works
+- You'll still see traffic - just no resolution
+
+
+---------------------------------------------------------------
+
+What you see on Wireshark
+
+- DNS query (UDP)
+- DNS response
+- TCP SYN
+- TCP SYN-ACK
+- TCP ACK
+- HTTP GET
+- Server response
+
+-------------------------------------------------------------
+
+
+Practice Questions:
+
+1.) Describe the TCP 3-Way Handshake in your own words.
+A.) For security purposes, you can't just start exchanging data with any server you'd like. Imagine a romantic relationship
+or any relationship for that matter. Both parties have to be in consent and like to be in the relationship. So for
+the Client and Server to be "in relationship" there has to be "dialogue" (SYN & ACK). The client says "I'd like to
+talk" which is SYN. The Server then says "Okay I'm hearing you, let's talk" sending a SYN-ACK. Then the client sends
+back a response like "Confirmed" which is ACK. Now a connection has been established and data may flow, or love in this
+example.
+
+
+2.) Why is DNS usually UDP and not TCP?
+A.) DNS uses UDP for speed and efficiency rather than the 3 way handshake which adds latency
+
+3.) What happens if DNS fails but the network is up?
+A.) You can still connect to devices via IP addess, but you won't be able to use domain names, leading to errors
+like "site cannot be reached".
+
+4.) What does a SYN flood look like conceptually?
+A.) Like a prank caller making countless requests to "hold the line" without ever completing a call, eventually
+tying up all the phone lines at a business so legitimate customers can't get through.
+
+5.) Why does Wireshark show both TCP and IP info for one packet?
+A.) BEcause they are different layers of the network stack. The transport layer (TCP) is inside the network layer (IP), 
+so WireShark shows both.
