@@ -1,0 +1,124 @@
+AWS IAM Fundamentals
+--------------------------
+
+What IAM Is
+
+AWS Identity and Access Management (IAM) is ther service used to
+control who can access AWS resources and what actions they are
+allowed to perform.
+
+IAM does not manage resources themselves - it manages authentication
+and authorization.
+
+--------------------------------------------------------------------------
+
+IAM Core Components
+
+IAM Users
+    - Represent individual people or applications
+    - Can authenticate using:
+        * Console password
+        * Access keys (programmatic)
+    - Best practice: users should not have permissions attached directly
+
+--------------------------------------------------------------------------
+
+IAM Groups
+    - Logical collection of IAM users
+    - Permissions are attached to the groups 
+    - Users inherit permissions through group membership
+
+--------------------------------------------------------------------------
+
+IAM Roles
+    - Do not have long-term credentials
+    - Are assumed temporarily
+    - Commonly used by:
+        * EC2 instances
+        * Lambda functions
+        * Cross-account access
+    - Preferred over access keys for automation and services
+
+--------------------------------------------------------------------------
+
+IAM Policies
+    - JSON documents that define permissions
+    - Specify:
+        * Effect (Allow/Deny)
+        * Actions (API calls)
+        * Resources (ARNs)
+    - Policies answer: "Who can do what on which resource"
+
+--------------------------------------------------------------------------
+
+Least Privilege Priniple
+
+Least privilege means granting only the permissions required to perform
+a task - nothing more.
+
+Benefits:
+    - Reduces blast radius
+    - Limits privilege escalation
+    - Prevents lateral movement
+    - Mitigates impact of credential compromise
+
+Most real-world AWS breaches are caused by overly permissive IAM Policies
+
+--------------------------------------------------------------------------
+
+Group-Based Permission Management
+
+Best practice:
+    - Attach policies to groups
+    - Add users to groups
+    - Avoid attaching policies directly to users
+
+Reasons:
+    - Easier auditing
+    - Consistent access control
+    - Faster permission changes
+    - Reduced configuration errors
+
+--------------------------------------------------------------------------
+
+Read-Only vs Administrative Access
+
+Read-only access:
+    - Allows visibility into resources
+    - Prevents creation, modification, or deletion
+    - Commonly used for:
+        * Security audits
+        * SOC analysis
+        * Monitoring Roles
+
+Administrative access should be tightly controlled and rarely assigned.
+
+---------------------------------------------------------------------------
+
+Why IAM Roles Are Safer Than Access Keys 
+
+Access keys:
+    - Long-lived credentials
+    - Easily leaked or committed accidentally
+    - Difficult to rotate at scale
+
+IAM roles:
+    - Temporary credentials
+    - Automatically rotated
+    - Scoped to specific services or tasks
+    - Strongly preferred for AWS services and automation
+
+---------------------------------------------------------------------------
+
+Security Relevance
+
+IAM is the primary security boundary in AWS
+
+Misconfigured IAM can lead to:
+    - Unauthorized access
+    - Privilege escalation
+    - Data exfiltration
+    - Full account compromise
+
+Understanding IAM is critical for cloud security, SOC operations, and 
+incident response.
